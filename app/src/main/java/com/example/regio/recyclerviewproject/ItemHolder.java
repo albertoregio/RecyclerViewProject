@@ -8,7 +8,6 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
 public class ItemHolder extends RecyclerView.ViewHolder {
 
     public TextView item;

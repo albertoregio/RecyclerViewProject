@@ -3,7 +3,6 @@ package com.example.regio.recyclerviewproject;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.OnItemClick;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         itemModel.setNome(edtNome.getText().toString());
 
         edtNome.setText("");
-        itemAdapter.updateList(itemModel);
+        itemAdapter.insertItem(itemModel);
 
         //edtNome.requestFocus();
     }

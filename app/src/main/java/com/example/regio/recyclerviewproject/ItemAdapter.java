@@ -9,25 +9,28 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+// Classe responsavel por controlar os itens que serao exibidas na tela
 public class ItemAdapter extends RecyclerView.Adapter<ItemHolder> {
 
+    // Declaracao de variaveis
     private final List<ItemModel> itens;
 
 
+    // Construtor da classe
     public ItemAdapter(ArrayList itens) {
         this.itens = itens;
     }
 
 
+    // Metodo responsavel pela criacao da classe que representa a tela
     @NonNull
     @Override
     public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         return new ItemHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.main_item_view, parent, false));
-
     }
 
 
+    // Metodo responsavel pela a alimentacao dos dados da tela
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, final int position) {
         holder.item.setText(itens.get(position).getNome());
@@ -36,30 +39,32 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemHolder> {
                                               @Override
                                               public void onClick(View view) {
                                                   final int p = position;
-                                                  removeItem(p);
+                                                  deleteItem(p);
                                               }
                                           }
         );
     }
 
+
+    // Recupera quantos itens de dados existem
     @Override
     public int getItemCount() {
         return (itens != null) ? itens.size() : 0;
     }
 
-    public void updateList(ItemModel item) {
-        insertItem(item);
-    }
 
-    private void insertItem(ItemModel item) {
+    // Insere na tela um novo item
+    public void insertItem(ItemModel item) {
         itens.add(item);
         notifyItemInserted(getItemCount());
     }
 
-    private void removeItem(int position) {
+
+    // Remove da tela um item na posicao determinada
+    public void deleteItem(int position) {
         itens.remove(position);
         notifyItemRemoved(position);
-        notifyItemRangeChanged(position,itens.size());
+        notifyItemRangeChanged(position, itens.size());
     }
 
 }
